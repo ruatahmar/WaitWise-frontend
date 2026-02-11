@@ -29,10 +29,10 @@ export default function QueueForm({ isOpen, onClose, onSubmit, initialData = nul
     }, [isOpen, initialData]);
 
     const handleInputChange = (e) => {
-        const { name, value, type } = e.target;
+        const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
-            [name]: type === 'number' ? Number(value) : value
+            [name]: value
         }));
     };
 

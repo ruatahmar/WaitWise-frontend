@@ -213,8 +213,8 @@ export default function AdminControlPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
               {[
                 { label: 'Total in Queue', value: queue.maxSize ? `${queue.count} / ${queue.maxSize}` : queue.count || 0, color: '#22C55E' },
-                { label: 'Grace Time', value: `${queue.graceTime || 0}m`, color: '#F59E0B' },
-                { label: 'Service Slots', value: queue.serviceSlots || 'N/A', color: '#22C55E' }
+                { label: 'Grace Time', value: `${queue.graceTime || 5}m`, color: '#F59E0B' },
+                { label: 'Service Slots', value: queue.serviceSlots || 1, color: '#22C55E' }
               ].map((stat, idx) => (
                 <div
                   key={idx}
