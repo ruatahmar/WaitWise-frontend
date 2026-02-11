@@ -14,8 +14,8 @@ export default function QueueForm({ isOpen, onClose, onSubmit, initialData = nul
             setFormData({
                 name: initialData.name || '',
                 maxSize: initialData.maxSize || '',
-                serviceSlots: initialData.serviceSlots || '',
-                graceTime: initialData.graceTime || ''
+                serviceSlots: initialData.serviceSlots || '1',
+                graceTime: initialData.graceTime || '5'
             });
         } else if (isOpen) {
             // Reset form for create mode
