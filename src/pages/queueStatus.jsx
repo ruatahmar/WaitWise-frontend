@@ -240,7 +240,7 @@ export function QueueStatus() {
                                 <div
                                     className="h-full transition-all duration-300"
                                     style={{
-                                        width: `${(queue.position / queue.count) * 100}%`,
+                                        width: `${((queue.count - queue.position + 1) / queue.count) * 100}%`,
                                         backgroundColor: '#22C55E'
                                     }}
                                 />
