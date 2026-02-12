@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { deleteQueue, getActiveUsers, getSpecificQueue, lateArrived, markComeplete, markLate, removeFromQueue, updateQueue } from '../api/queueApi';
 import { NavBar } from '../components/navBar';
-import { socket } from '../socket';
 import QueueForm from '../components/queueForm';
+import { createSocket } from '../socket';
 
 export default function AdminControlPage() {
   const { queueId } = useParams()
@@ -22,6 +22,7 @@ export default function AdminControlPage() {
   useEffect(() => {
     let isMounted = true;
 
+    const socket = createSocket();
     socket.connect();
     socket.emit("joinQueue", { queueId: qid });
 

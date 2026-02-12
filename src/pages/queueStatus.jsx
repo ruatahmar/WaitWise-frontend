@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { getQueueStatus, leaveQueue, rejoinQueue } from "../api/queueApi"
 import { useParams } from "react-router-dom"
-import { socket } from "../socket";
+
 import { NavBar } from "../components/navBar";
 import formatExpireTime from "../utils/formateExpiryAt";
+import { createSocket } from "../socket";
 
 export function QueueStatus() {
     const [queue, setQueue] = useState({})
@@ -24,6 +25,7 @@ export function QueueStatus() {
 
     useEffect(() => {
         if (!quid) return;
+        const socket = createSocket();
         socket.connect()
         socket.emit("joinQueueUser", { queueUserId: quid });
         const onUserStatusUpdate = (payload) => {

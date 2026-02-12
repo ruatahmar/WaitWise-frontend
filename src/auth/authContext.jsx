@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react"
 import { refreshToken, logout as logoutApi } from "../api/authApi"
 import { tokenStore } from "./token"
 import { AuthContext } from "./useAuth"
-import { socket } from "../socket"
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null)
@@ -26,15 +25,6 @@ export function AuthProvider({ children }) {
 
         initAuth()
     }, [])
-    useEffect(() => {
-        if (!loading && user) {
-            socket.connect();
-        }
-
-        if (!user) {
-            socket.disconnect();
-        }
-    }, [loading, user]);
     const logout = async () => {
         await logoutApi()
         tokenStore.clear()
